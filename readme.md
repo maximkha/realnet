@@ -1,6 +1,6 @@
 # Realnet
 
-![Screenshot 2021-02-12 170834](Screenshot 2021-02-12 170834.png)
+![Screenshot](Screenshot.png)
 
 This is a side project I started after being fascinated with [analog computers](https://en.wikipedia.org/wiki/Analog_computer). I set out to create a neural network in real life with simple parts. Above, you can see a Pytorch model trained on XOR that I converted to a circuit.
 
