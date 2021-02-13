@@ -9,3 +9,15 @@ This is a side project I started after being fascinated with [analog computers](
 ### Progress, Ideas, and Current Implementation
 
 The current milestone as of `2/12/2021` is that I was successfully able to create a circuit that implemented the XOR network that I trained in Pytorch. Some initial ideas I explored were analog multipliers, which after considering the fact I wanted to build one of these in real life, became impractical. Then I decided the weights would be static and switched my approach for voltage multiplication to an [inverted op amp summer](https://www.electronics-tutorials.ws/opamp/opamp_4.html). Inverted op amp summers are perfect for the job because they sum the voltages (+ and - voltages still cancel out!) and they can be weighted, just like a neuron’s input can be weighted! To learn more about how the actual weighting, summing, and inverting works, follow the link to the inverted op amp summer above (it’s surprisingly simple). So the op amp weighted summer circuit actually implements most of the functions of the neuron, namely, multiplying by weights, and summing the inputs. Now anyone knows that the neuron needs a nonlinear activation function so that it doesn’t experience layer collapse (short explanation: without the non-linear activation, a NN is just a composition of linear transformations, so they can be multiplied out into one transformation). Luckily, there is a popular activation function that is cheap, and simple to implement: [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)). ReLU functions essentially like a perfect diode, blocking current flow into the negative direction. This fully encapsulates all the components needed to create a neural network. The minimum number of op amps needed for a neuron is one, but this means that all the weights, including the bias, that connect to the neuron must be negative.
+
+
+
+### Todo
+
+These are some things that I hope to accomplish.
+
+1. ~~Figure out basic design mechanisms like adding, multiplying, and non-linear~~
+2. ~~Actually design circuit that works in simulation~~
+3. Bigger net
+4. Physical prototype
+5. **Automatic transcription**
