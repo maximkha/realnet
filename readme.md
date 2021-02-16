@@ -20,5 +20,5 @@ These are some things that I hope to accomplish.
 2. ~~Actually design circuit that works in simulation~~
 3. Bigger net
 4. Physical prototype
-5. **Automatic transcription**
+5. ~~**Automatic transcription**~~
 6. Adjust for diode forward volatge drop
