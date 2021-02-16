@@ -141,9 +141,10 @@ class FalNet:
         newLayerOut = []
         for i in range(outputs):
             print(i)
+            print(bias[i])
             neur = FalNeuron()
             neur.generate(pen, useDiode)
-            inpWeight = list(zip(list(mat[0]), range(inputs)))
+            inpWeight = list(zip(list(mat[i]), range(inputs)))
             print(list(inpWeight))
             negativeWeights = filter(lambda x: x[0] < 0, inpWeight)
             positiveWeights = filter(lambda x: x[0] > 0, inpWeight)
@@ -177,8 +178,10 @@ class FalNet:
 
             # Neurons.append(neur)
             newLayerOut.append(neur.Output)
-            pen = add(pen, (0, neur.Size[1] + ONE_WIRE))
+            pen = add(pen, (0, neur.Size[1] + TWO_WIRE))
             self.Code += "\n" + neur.Code
+        self.LayerPos = add(self.LayerPos, (neur.Size[0] + TWO_WIRE * 4, 0))
+        self.PrevConns = newLayerOut
 
 allCode = ""
 allCode += createVarVoltRail((-ONE_WIRE*7, 0), (-ONE_WIRE*9, 0), "x")
@@ -187,7 +190,9 @@ net = FalNet()
 net.addInput((-ONE_WIRE*7, 0))
 net.addInput((-ONE_WIRE*7, ONE_WIRE))
 net.addLayer(np.array([[-0.7597, -0.4776],[ 0.7230,  0.7230]]), np.array([0.4776, -0.7117]), "relu")
-# net.addLayer(np.array([[-0.7597, -0.4776]]), np.array([0.4776]), "lin")
+net.addLayer(np.array([[-2.1265, -1.3831]]), np.array([1.0156]), "lin")
+# net.addLayer(np.array([[-0.7597, -0.4776]]), np.array([0.4776]), "relu")
+# net.addLayer(np.array([[ 0.7230,  0.7230]]), np.array([-0.7117]), "relu")
 allCode += "\n" + net.Code
 
 # neur = FalNeuron()
